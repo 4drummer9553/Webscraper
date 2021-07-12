@@ -15,24 +15,24 @@ cur.execute("""CREATE TABLE IF NOT EXISTS soccer(
                 last_season TEXT
                 )""")
 
-# Removes a laptop
+# Removes a player
 def remove_player(player_name):
     with connection:
         cur.execute("DELETE FROM soccer WHERE player_name = ?", (player_name,))
 
-# Updates laptop price
+# Updates medals
 def update_medals(player_name, medals):
     with connection:
         cur.execute("""UPDATE soccer SET
                     medals = ? WHERE player_name = ?""", (medals, player_name))
 
-# Inserts a new laptop
+# Inserts a new player
 def insert_player(col):
     with connection:
         cur.execute("""INSERT INTO soccer
                     VALUES(?,?,?,?,?,?,?)""", (col[0],col[1],col[2],col[3],col[4],col[5],col[6]))
 
-# Find laptops of certain price
+# Find player by name
 def find_player(player_name):
     with connection:
         cur.execute("SELECT * FROM soccer WHERE player_name =?", (player_name,))
